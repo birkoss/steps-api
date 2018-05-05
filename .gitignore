@@ -1,0 +1,4 @@
+._*
+.well-known/*
+.DS_Store
+api/config/database.php
