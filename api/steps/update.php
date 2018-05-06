@@ -22,7 +22,11 @@ if (!$user->get()) {
 
 $devices = json_decode(base64_decode($_GET['data']));
 
+$systemID = "";
+
 foreach ($devices as $single_device) {
+    $systemID = $single_device->systemID;
+
     foreach ($single_device->steps as $single_step) {
         $step = new Step($db);
         $step->device_id = $single_device->uuid;
@@ -35,7 +39,8 @@ foreach ($devices as $single_device) {
 }
 
 $success = array(
-    "message" =>  "Created"
+    "systemID" =>  $systemID,
+    "date_updated" => date('Y-m-d H:i:s')
 );
  
 resolve($success);
