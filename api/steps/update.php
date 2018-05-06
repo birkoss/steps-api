@@ -29,7 +29,7 @@ foreach ($devices as $single_device) {
 
     foreach ($single_device->steps as $single_step) {
         $step = new Step($db);
-        $step->device_id = $single_device->uuid;
+        $step->device_id = ($single_device->uuid != "" ? $single_device->uuid : $single_device->systemID);
         $step->user_uid = $user->uid;
         $step->date = $single_step->date;
         $step->steps = $single_step->count;

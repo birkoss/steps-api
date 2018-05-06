@@ -22,7 +22,7 @@ if (!$user->get()) {
 
 $step = new Step($db);
 $step->user_uid = $user->uid;
-$step->device_id = isset($_GET['device_id']) ? $_GET['device_id'] : reject("2000", "No device ID provided");
+$step->device_id = isset($_GET['device_id']) ? base64_decode($_GET['device_id']) : reject("2000", "No device ID provided");
 
 $steps = $step->fetch();
 
